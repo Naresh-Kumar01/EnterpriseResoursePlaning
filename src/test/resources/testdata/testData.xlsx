@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+  <Worksheet ss:Name="LoginCredentials">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">TestCase</Data></Cell>
+        <Cell><Data ss:Type="String">Username</Data></Cell>
+        <Cell><Data ss:Type="String">Password</Data></Cell>
+        <Cell><Data ss:Type="String">Result</Data></Cell>
+        <Cell><Data ss:Type="String">Tags</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC001</Data></Cell>
+        <Cell><Data ss:Type="String">Admin</Data></Cell>
+        <Cell><Data ss:Type="String">logixerp</Data></Cell>
+        <Cell><Data ss:Type="String">Success</Data></Cell>
+        <Cell><Data ss:Type="String">@Positive @Sanity</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC002</Data></Cell>
+        <Cell><Data ss:Type="String">Admin</Data></Cell>
+        <Cell><Data ss:Type="String">WrongPassword123</Data></Cell>
+        <Cell><Data ss:Type="String">Authentication Failure</Data></Cell>
+        <Cell><Data ss:Type="String">@test_signin_correctUsername_incorrectPassword @Negative</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC003</Data></Cell>
+        <Cell><Data ss:Type="String">NonExistentUser999</Data></Cell>
+        <Cell><Data ss:Type="String">logixerp</Data></Cell>
+        <Cell><Data ss:Type="String">Authentication Failure</Data></Cell>
+        <Cell><Data ss:Type="String">@test_signin_incorrectUsername_correctPassword @Negative</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC004</Data></Cell>
+        <Cell><Data ss:Type="String">NonExistentUser999</Data></Cell>
+        <Cell><Data ss:Type="String">WrongPassword123</Data></Cell>
+        <Cell><Data ss:Type="String">Authentication Failure</Data></Cell>
+        <Cell><Data ss:Type="String">@test_signin_incorrectUsername_incorrectPassword @Negative</Data></Cell>
+      </Row>
+    </Table>
+  </Worksheet>
+</Workbook>

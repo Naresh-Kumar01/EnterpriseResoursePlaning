@@ -1,0 +1,42 @@
+{
+  "validUser": {
+    "username": "Admin",
+    "password": "logixerp"
+  },
+  "correctUsernameIncorrectPassword": {
+    "username": "Admin",
+    "password": "WrongPassword123",
+    "expectedError": "Authentication Failure",
+    "testName": "test_signin_correctUsername_incorrectPassword"
+  },
+  "incorrectUsernameCorrectPassword": {
+    "username": "NonExistentUser999",
+    "password": "logixerp",
+    "expectedError": "Authentication Failure",
+    "testName": "test_signin_incorrectUsername_correctPassword"
+  },
+  "incorrectUsernameIncorrectPassword": {
+    "username": "NonExistentUser999",
+    "password": "WrongPassword123",
+    "expectedError": "Authentication Failure",
+    "testName": "test_signin_incorrectUsername_incorrectPassword"
+  },
+  "lockedUser": {
+    "username": "locked_out_user",
+    "password": "secret_sauce"
+  },
+  "invalidUser": {
+    "username": "invalid_user",
+    "password": "invalid_pass"
+  },
+  "searchKeywords": [
+    {
+      "keyword": "Backpack",
+      "minResults": 1
+    },
+    {
+      "keyword": "Jacket",
+      "minResults": 1
+    }
+  ]
+}

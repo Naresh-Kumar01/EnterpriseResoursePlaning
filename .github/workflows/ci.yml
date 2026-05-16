@@ -1,0 +1,42 @@
+name: BDD Automation CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        browser: [chrome]
+        environment: [dev]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+          cache: maven
+
+      - name: Generate Excel test data
+        run: mvn -q exec:java -Dexec.mainClass="com.logix.automation.utilities.ExcelDataGenerator" -Dexec.classpathScope=test || true
+
+      - name: Run BDD tests
+        run: mvn clean test -Denvironment=${{ matrix.environment }} -Dbrowser=${{ matrix.browser }} -Dheadless=true
+        continue-on-error: false
+
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports-${{ matrix.browser }}
+          path: |
+            test-output/
+            target/cucumber-reports/
