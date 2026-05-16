@@ -1,0 +1,32 @@
+LogixPlatform Git Setup - Completed
+====================================
+Timestamp: 2026-05-16
+User: Naresh-Kumar01
+Email: Nareshsofttechh@gmail.com
+
+Setup Actions Performed:
+✓ Removed .git from home directory (C:\Users\Admin)
+✓ Navigated to correct project directory
+✓ Initialized Git repository in LogixPlateform
+✓ Configured Git user (local repo config)
+✓ Staged and committed initial files
+✓ Created feature branch: feature/signin-negative-test-cases
+
+Current Status:
+- Location: C:\Users\Admin\Desktop\LogixPlateform
+- Current Branch: feature/signin-negative-test-cases
+- Initial Commit: b512dbc
+- User: Naresh-Kumar01
+- Email: Nareshsofttechh@gmail.com
+
+Next Actions:
+1. Add remote: git remote add origin <your-repo-url>
+2. Push branch: git push -u origin feature/signin-negative-test-cases
+3. Run tests: mvn clean test
+
+Commands to Remember:
+- git status          → Check current state
+- git log --oneline   → View commits
+- git branch          → List branches
+- git add .           → Stage changes
+- git commit -m ""    → Create commit
