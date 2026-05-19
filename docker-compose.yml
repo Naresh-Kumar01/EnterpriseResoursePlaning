@@ -1,0 +1,44 @@
+# EnterpriseResourcePlanning - Selenium Grid 4 (Hub + Chrome Node)
+# Usage: docker compose up -d
+# Grid UI: http://localhost:4444
+# WebDriver: http://localhost:4444/wd/hub
+
+services:
+  selenium-hub:
+    image: selenium/hub:4.27.0-20241127
+    container_name: enterprise-resource-planning-selenium-hub
+    ports:
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
+    environment:
+      - SE_LOG_LEVEL=INFO
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4444/wd/hub/status"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    networks:
+      - enterprise-resource-planning-selenium-grid
+
+  chrome:
+    image: selenium/node-chrome:4.27.0-20241127
+    container_name: enterprise-resource-planning-selenium-chrome
+    shm_size: 2gb
+    depends_on:
+      selenium-hub:
+        condition: service_healthy
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_MAX_SESSIONS=4
+      - SE_NODE_SESSION_TIMEOUT=300
+      - SE_VNC_NO_PASSWORD=1
+    networks:
+      - enterprise-resource-planning-selenium-grid
+
+networks:
+  enterprise-resource-planning-selenium-grid:
+    driver: bridge

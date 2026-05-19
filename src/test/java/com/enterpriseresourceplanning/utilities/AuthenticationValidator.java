@@ -1,4 +1,4 @@
-package utilities;
+package com.enterpriseresourceplanning.utilities;
 
 import java.time.Duration;
 import java.util.Arrays;
@@ -18,7 +18,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Sign-in authentication failure validation for test cases 2, 3, and 4.
- * Mirrors Playwright/Jest checks using Selenium against LogixERP login flow.
+ * Mirrors Playwright/Jest checks using Selenium against the ERP application login flow.
  */
 public class AuthenticationValidator {
 
@@ -95,7 +95,7 @@ public class AuthenticationValidator {
 		Assert.assertTrue("Error message must be visible to the user", errorElement.isDisplayed());
 
 		if (validateRedColor) {
-			// Playwright TC3: prefer red error styling; LogixERP may use black — pass if any failure node is red
+			// Playwright TC3: prefer red error styling; application UI may use black — pass if any failure node is red
 			Boolean hasRedStyledFailure = (Boolean) ((JavascriptExecutor) driver).executeScript(
 					"var nodes = document.querySelectorAll('*');"
 							+ "for (var i = 0; i < nodes.length; i++) {"
@@ -110,7 +110,7 @@ public class AuthenticationValidator {
 				String color = (String) ((JavascriptExecutor) driver).executeScript(
 						"return window.getComputedStyle(arguments[0]).color;", errorElement);
 				Assert.assertTrue(
-						"Authentication Failure message must be visible (color on LogixERP may be non-red): " + color,
+						"Authentication Failure message must be visible (color on application UI may be non-red): " + color,
 						errorElement.isDisplayed());
 			}
 		}
@@ -199,7 +199,7 @@ public class AuthenticationValidator {
 	}
 
 	private void assertProtectedRouteInaccessible() {
-		// Stay on login page — do NOT navigate to /Home (returns 404 on LogixERP).
+		// Stay on login page — do NOT navigate to /Home (returns 404 on the application under test).
 		// Verify dashboard/protected content is not accessible from the failed-login state.
 		String currentUrl = driver.getCurrentUrl();
 		Assert.assertFalse("Must not land on 404 during auth-failure test: " + currentUrl, is404Page());

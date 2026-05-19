@@ -25,9 +25,6 @@ jobs:
           distribution: "temurin"
           cache: maven
 
-      - name: Generate Excel test data
-        run: mvn -q exec:java -Dexec.mainClass="com.logix.automation.utilities.ExcelDataGenerator" -Dexec.classpathScope=test || true
-
       - name: Run BDD tests
         run: mvn clean test -Denvironment=${{ matrix.environment }} -Dbrowser=${{ matrix.browser }} -Dheadless=true
         continue-on-error: false

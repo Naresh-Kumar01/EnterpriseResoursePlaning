@@ -22,7 +22,7 @@
     </Appenders>
 
     <Loggers>
-        <Logger name="com.logix.automation" level="DEBUG" additivity="false">
+        <Logger name="com.enterpriseresourceplanning" level="DEBUG" additivity="false">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="FileAppender"/>
         </Logger>

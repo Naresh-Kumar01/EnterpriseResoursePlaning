@@ -1,4 +1,4 @@
-LogixPlatform Git Setup - Completed
+EnterpriseResourcePlanning Git Setup - Completed
 ====================================
 Timestamp: 2026-05-16
 User: Naresh-Kumar01
@@ -7,13 +7,13 @@ Email: Nareshsofttechh@gmail.com
 Setup Actions Performed:
 ✓ Removed .git from home directory (C:\Users\Admin)
 ✓ Navigated to correct project directory
-✓ Initialized Git repository in LogixPlateform
+✓ Initialized Git repository in EnterpriseResourcePlanning
 ✓ Configured Git user (local repo config)
 ✓ Staged and committed initial files
 ✓ Created feature branch: feature/signin-negative-test-cases
 
 Current Status:
-- Location: C:\Users\Admin\Desktop\LogixPlateform
+- Location: C:\Users\Admin\Desktop\EnterpriseResourcePlanning
 - Current Branch: feature/signin-negative-test-cases
 - Initial Commit: b512dbc
 - User: Naresh-Kumar01

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <title>EnterpriseResourcePlanning Build Notification</title>
+</head>
+<body style="font-family:Segoe UI,Arial,sans-serif;background:#f5f5f5;padding:24px;">
+  <div style="max-width:640px;margin:0 auto;background:#fff;border-radius:8px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,.1);">
+    <h2 style="margin-top:0;color:#1565c0;">EnterpriseResourcePlanning CI/CD</h2>
+    <p>Build <strong>${BUILD_NUMBER}</strong> finished with status: <strong>${BUILD_STATUS}</strong></p>
+    <table style="width:100%;border-collapse:collapse;">
+      <tr><td style="padding:8px;border:1px solid #ddd;"><b>Project</b></td><td style="padding:8px;border:1px solid #ddd;">EnterpriseResourcePlanning</td></tr>
+      <tr><td style="padding:8px;border:1px solid #ddd;"><b>Branch</b></td><td style="padding:8px;border:1px solid #ddd;">${GIT_BRANCH}</td></tr>
+      <tr><td style="padding:8px;border:1px solid #ddd;"><b>Build URL</b></td><td style="padding:8px;border:1px solid #ddd;"><a href="${BUILD_URL}">${BUILD_URL}</a></td></tr>
+    </table>
+    <p style="color:#666;font-size:12px;">Extent &amp; Cucumber reports are attached / archived in Jenkins artifacts.</p>
+  </div>
+</body>
+</html>
