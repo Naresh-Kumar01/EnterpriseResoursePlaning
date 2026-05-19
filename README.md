@@ -1,4 +1,4 @@
-# Logix BDD Automation Framework
+# Enterprise Resource Planning BDD Automation Framework
 
 Production-ready BDD test automation framework using **Selenium 4**, **Cucumber 7**, **TestNG 7**, **Log4j2**, and **Extent Reports**. Built with Page Object Model (POM) for team scalability.
 
@@ -20,19 +20,16 @@ Production-ready BDD test automation framework using **Selenium 4**, **Cucumber 
 ## Project Structure
 
 ```
-LogixPlateform/
+EnterpriseResourcePlanning/
 ├── pom.xml
 ├── testng.xml
 ├── README.md
 ├── .github/workflows/ci.yml
 └── src/test/
-    ├── java/com/logix/automation/
-    │   ├── hooks/              # Cucumber @Before/@After
-    │   ├── listeners/          # TestNG listeners & retry
-    │   ├── pageObjects/        # POM page classes
-    │   ├── runners/            # TestNG + Cucumber runner
-    │   ├── stepDefinitions/    # Gherkin step bindings
-    │   └── utilities/          # Config, driver, waits, reports
+    ├── java/com/enterpriseresourceplanning/
+    │   ├── runner/             # Cucumber + JUnit test runner
+    │   ├── stepdefinitions/    # Gherkin step bindings
+    │   └── utilities/          # Config, driver, grid, auth validation
     └── resources/
         ├── features/           # .feature files
         ├── testdata/           # JSON & Excel data
@@ -48,14 +45,26 @@ LogixPlateform/
 - **Maven 3.8+**
 - Chrome / Firefox / Edge (WebDriverManager handles drivers)
 
+## CI/CD (Jenkins + Docker Selenium Grid)
+
+| Resource | Description |
+|----------|-------------|
+| [Jenkinsfile](Jenkinsfile) | Declarative pipeline (webhook → Grid → `mvn clean test` → email) |
+| [docker-compose.yml](docker-compose.yml) | Selenium Hub + Chrome node |
+| [docs/JENKINS_CI_CD_SETUP.md](docs/JENKINS_CI_CD_SETUP.md) | Full Jenkins/Docker/webhook/SMTP setup |
+| [docs/CI_CD_EXECUTION_FLOW.md](docs/CI_CD_EXECUTION_FLOW.md) | Architecture diagram & workflow |
+| [jenkins/GMAIL_SMTP_SETUP.md](jenkins/GMAIL_SMTP_SETUP.md) | Gmail email notifications |
+
+```powershell
+docker compose up -d
+mvn clean test -Pci
+```
+
 ## Quick Start
 
 ```bash
 # Clone and enter project
-cd LogixPlateform
-
-# Generate sample Excel test data (optional)
-mvn exec:java -Dexec.mainClass="com.logix.automation.utilities.ExcelDataGenerator" -Dexec.classpathScope=test
+cd EnterpriseResourcePlanning
 
 # Run all tests (default: dev + chrome)
 mvn clean test
@@ -198,4 +207,4 @@ Sample tests target [SauceDemo](https://www.saucedemo.com) (Swag Labs). Replace 
 
 ## License
 
-Internal use – Logix Platform QA Team.
+Internal use – Enterprise Resource Planning QA Team.
