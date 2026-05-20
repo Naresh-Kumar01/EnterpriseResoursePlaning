@@ -8,8 +8,8 @@
     <artifactId>enterprise-resource-planning</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Enterprise Resource Planning BDD Automation Framework</name>
-    <description>Selenium + Cucumber + JUnit BDD framework for Enterprise Resource Planning</description>
+    <name>Enterprise Resource Planning Automation Framework</name>
+    <description>Unified UI (Selenium/Cucumber) + API (REST Assured/TestNG) enterprise automation framework</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,31 +25,33 @@
         <apache.poi.version>5.3.0</apache.poi.version>
         <jackson.version>2.18.2</jackson.version>
         <extent.cucumber.adapter.version>1.14.0</extent.cucumber.adapter.version>
+        <allure.version>2.29.1</allure.version>
         <surefire.version>3.5.2</surefire.version>
         <environment>dev</environment>
+        <api.environment>qa</api.environment>
         <browser>chrome</browser>
         <headless>false</headless>
         <selenium.grid.enabled>false</selenium.grid.enabled>
         <selenium.grid.url>http://localhost:4444/wd/hub</selenium.grid.url>
-        <parallel.thread.count>1</parallel.thread.count>
     </properties>
 
     <dependencies>
+        <!-- UI -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.27.0</version>
+            <version>${selenium.version}</version>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>7.20.1</version>
+            <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <version>7.20.1</version>
+            <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -61,55 +63,90 @@
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>6.3.3</version>
+            <version>${webdrivermanager.version}</version>
         </dependency>
+
+        <!-- API -->
         <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>2.25.3</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.25.4</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j2-impl</artifactId>
-            <version>2.25.3</version>
-        </dependency>
-        <dependency>
-            <groupId>com.aventstack</groupId>
-            <artifactId>extentreports</artifactId>
-            <version>5.0.9</version>
-        </dependency>
-        <dependency>
-            <groupId>tech.grasshopper</groupId>
-            <artifactId>extentreports-cucumber7-adapter</artifactId>
-            <version>1.13.0</version>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${restassured.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <version>5.5.6</version>
+            <artifactId>json-schema-validator</artifactId>
+            <version>${restassured.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Data -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
-            <version>5.4.1</version>
+            <version>${apache.poi.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
-            <version>5.4.1</version>
+            <version>${apache.poi.version}</version>
+        </dependency>
+
+        <!-- Logging -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.19.2</version>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j2-impl</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+        <!-- Reporting -->
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>${extentreports.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>tech.grasshopper</groupId>
+            <artifactId>extentreports-cucumber7-adapter</artifactId>
+            <version>${extent.cucumber.adapter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure.version}</version>
+            <scope>test</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-rest-assured</artifactId>
+            <version>${allure.version}</version>
+            <scope>test</scope>
+            <optional>true</optional>
+        </dependency>
+
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -137,16 +174,30 @@
                 <version>${surefire.version}</version>
                 <configuration>
                     <includes>
-                        <include>**/com/enterpriseresourceplanning/runner/*.java</include>
+                        <include>**/ui/runner/*TestRun.java</include>
+                        <include>**/api/testcases/User*Test.java</include>
                     </includes>
                     <systemPropertyVariables>
                         <environment>${environment}</environment>
+                        <api.environment>${api.environment}</api.environment>
                         <browser>${browser}</browser>
                         <headless>${headless}</headless>
                         <selenium.grid.enabled>${selenium.grid.enabled}</selenium.grid.enabled>
                         <selenium.grid.url>${selenium.grid.url}</selenium.grid.url>
                     </systemPropertyVariables>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.surefire</groupId>
+                        <artifactId>surefire-junit47</artifactId>
+                        <version>${surefire.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.maven.surefire</groupId>
+                        <artifactId>surefire-testng</artifactId>
+                        <version>${surefire.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
@@ -174,30 +225,65 @@
             </properties>
         </profile>
         <profile>
+            <id>qa</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <api.environment>qa</api.environment>
+            </properties>
+        </profile>
+        <profile>
+            <id>uat</id>
+            <properties>
+                <api.environment>uat</api.environment>
+            </properties>
+        </profile>
+        <profile>
+            <id>api-prod</id>
+            <properties>
+                <api.environment>prod</api.environment>
+            </properties>
+        </profile>
+        <profile>
+            <id>ui-only</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <includes>
+                                <include>**/ui/runner/*TestRun.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>api-only</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <includes>
+                                <include>**/api/testcases/User*Test.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
             <id>chrome</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
                 <browser>chrome</browser>
-            </properties>
-        </profile>
-        <profile>
-            <id>firefox</id>
-            <properties>
-                <browser>firefox</browser>
-            </properties>
-        </profile>
-        <profile>
-            <id>edge</id>
-            <properties>
-                <browser>edge</browser>
-            </properties>
-        </profile>
-        <profile>
-            <id>parallel</id>
-            <properties>
-                <parallel.thread.count>4</parallel.thread.count>
             </properties>
         </profile>
         <profile>
@@ -212,8 +298,20 @@
             <properties>
                 <selenium.grid.enabled>true</selenium.grid.enabled>
                 <headless>true</headless>
-                <environment>dev</environment>
+                <api.environment>qa</api.environment>
             </properties>
+        </profile>
+        <profile>
+            <id>allure</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.qameta.allure</groupId>
+                        <artifactId>allure-maven</artifactId>
+                        <version>2.15.2</version>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
 </project>

@@ -1,4 +1,4 @@
-name: BDD Automation CI
+name: Enterprise Automation CI
 
 on:
   push:
@@ -6,6 +6,25 @@ on:
   pull_request:
     branches: [main, develop]
   workflow_dispatch:
+    inputs:
+      test_scope:
+        description: "Test scope (all, ui, api)"
+        required: false
+        default: "all"
+        type: choice
+        options:
+          - all
+          - ui
+          - api
+      api_environment:
+        description: "API environment"
+        required: false
+        default: "qa"
+        type: choice
+        options:
+          - qa
+          - uat
+          - prod
 
 jobs:
   test:
@@ -25,9 +44,17 @@ jobs:
           distribution: "temurin"
           cache: maven
 
-      - name: Run BDD tests
-        run: mvn clean test -Denvironment=${{ matrix.environment }} -Dbrowser=${{ matrix.browser }} -Dheadless=true
-        continue-on-error: false
+      - name: Run tests
+        run: |
+          SCOPE="${{ github.event.inputs.test_scope || 'all' }}"
+          API_ENV="${{ github.event.inputs.api_environment || 'qa' }}"
+          if [ "$SCOPE" = "api" ]; then
+            mvn clean test -Papi-only -Dapi.environment=$API_ENV
+          elif [ "$SCOPE" = "ui" ]; then
+            mvn clean test -Pui-only -Denvironment=${{ matrix.environment }} -Dbrowser=${{ matrix.browser }} -Dheadless=true
+          else
+            mvn clean test -Denvironment=${{ matrix.environment }} -Dbrowser=${{ matrix.browser }} -Dheadless=true -Dapi.environment=$API_ENV
+          fi
 
       - name: Upload test reports
         if: always()
@@ -37,3 +64,4 @@ jobs:
           path: |
             test-output/
             target/cucumber-reports/
+            target/surefire-reports/

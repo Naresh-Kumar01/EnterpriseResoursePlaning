@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="API Suite" verbose="2">
+    <listeners>
+        <listener class-name="com.enterpriseresourceplanning.listeners.TestListener"/>
+    </listeners>
+    <test name="User API CRUD">
+        <classes>
+            <class name="com.enterpriseresourceplanning.api.testcases.UserGETTest"/>
+            <class name="com.enterpriseresourceplanning.api.testcases.UserPOSTTest"/>
+            <class name="com.enterpriseresourceplanning.api.testcases.UserPUTTest"/>
+            <class name="com.enterpriseresourceplanning.api.testcases.UserDELETETest"/>
+        </classes>
+    </test>
+</suite>

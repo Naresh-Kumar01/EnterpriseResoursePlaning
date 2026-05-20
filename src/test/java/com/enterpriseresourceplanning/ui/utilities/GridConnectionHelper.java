@@ -1,4 +1,4 @@
-package com.enterpriseresourceplanning.utilities;
+package com.enterpriseresourceplanning.ui.utilities;
 
 import java.net.HttpURLConnection;
 import java.net.URI;

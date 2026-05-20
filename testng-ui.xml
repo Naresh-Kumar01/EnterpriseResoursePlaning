@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<!--
+  UI tests use Cucumber + JUnit (@RunWith). Execute with: mvn test -Pui-only
+-->
+<suite name="UI Placeholder Suite" verbose="1">
+    <test name="UI via Surefire JUnit">
+        <classes>
+            <class name="com.enterpriseresourceplanning.ui.runner.TestRun"/>
+        </classes>
+    </test>
+</suite>

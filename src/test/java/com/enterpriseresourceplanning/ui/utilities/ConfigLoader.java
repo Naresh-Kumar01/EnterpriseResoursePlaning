@@ -1,11 +1,11 @@
-package com.enterpriseresourceplanning.utilities;
+package com.enterpriseresourceplanning.ui.utilities;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
 /**
- * Loads config.properties and applies CI/CD overrides from system properties and environment variables.
+ * Loads UI config.properties with CI/CD system property and environment variable overrides.
  */
 public final class ConfigLoader {
 

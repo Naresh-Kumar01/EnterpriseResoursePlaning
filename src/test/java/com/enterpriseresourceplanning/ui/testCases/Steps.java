@@ -1,4 +1,4 @@
-package com.enterpriseresourceplanning.stepdefinitions;
+package com.enterpriseresourceplanning.ui.testCases;
 
 import java.time.Duration;
 import java.util.Collection;
@@ -15,9 +15,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.enterpriseresourceplanning.utilities.AuthenticationValidator;
-import com.enterpriseresourceplanning.utilities.ConfigLoader;
-import com.enterpriseresourceplanning.utilities.DriverFactory;
+import com.enterpriseresourceplanning.ui.utilities.AuthenticationValidator;
+import com.enterpriseresourceplanning.ui.utilities.ConfigLoader;
+import com.enterpriseresourceplanning.ui.utilities.DriverFactory;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -51,7 +51,7 @@ public class Steps {
 		fullAuthRejectionValidated = false;
 		loadConfig();
 		launchBrowserAndNavigateToLogin();
-		LOG.info("beforeEach: browser launched → page created → navigated to ERP application login");
+		LOG.info("beforeEach: browser launched â†’ page created â†’ navigated to ERP application login");
 	}
 
 	@Given("the user navigates to logixerp.com")
@@ -277,7 +277,7 @@ public class Steps {
 		driver.get(baseUrl);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(USERNAME_FIELD));
 		AuthenticationValidator.clearBrowserAuthStorage(driver);
-		LOG.info("Browser ready → " + baseUrl
+		LOG.info("Browser ready â†’ " + baseUrl
 				+ (Boolean.parseBoolean(config.getProperty("selenium.grid.enabled", "false")) ? " [Grid]" : " [Local]"));
 	}
 
@@ -327,7 +327,7 @@ public class Steps {
 			fullAuthRejectionValidated = true;
 			int testCaseNumber = resolveNegativeTestCaseNumber();
 			if (testCaseNumber > 0) {
-				System.out.println("\n✓✓✓ TEST CASE " + testCaseNumber + ": Authentication validation complete");
+				System.out.println("\nâœ“âœ“âœ“ TEST CASE " + testCaseNumber + ": Authentication validation complete");
 			}
 			LOG.info("Test PASSED (auth rejection): " + currentScenarioName);
 		}
@@ -425,7 +425,7 @@ public class Steps {
 		}
 		driver = null;
 		wait = null;
-		LOG.info("finally: scenario cleanup complete — " + currentScenarioName);
+		LOG.info("finally: scenario cleanup complete â€” " + currentScenarioName);
 	}
 
 	private void finallyClosePageAndBrowser() {
@@ -487,3 +487,4 @@ public class Steps {
 	}
 
 }
+

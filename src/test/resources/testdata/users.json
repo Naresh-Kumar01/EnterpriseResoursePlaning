@@ -1,0 +1,12 @@
+{
+  "createUser": {
+    "name": "ERP Automation User",
+    "username": "erp_auto_user",
+    "email": "erp.automation@logixerp.com"
+  },
+  "updateUser": {
+    "id": 1,
+    "name": "ERP Updated User",
+    "email": "erp.updated@logixerp.com"
+  }
+}

@@ -1,4 +1,4 @@
-package com.enterpriseresourceplanning.utilities;
+package com.enterpriseresourceplanning.ui.utilities;
 
 import java.time.Duration;
 import java.util.Arrays;

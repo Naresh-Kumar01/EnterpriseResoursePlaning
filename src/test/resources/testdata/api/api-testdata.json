@@ -1,0 +1,13 @@
+{
+  "createPost": {
+    "title": "ERP API Automation Post",
+    "body": "Created via REST Assured framework",
+    "userId": 1
+  },
+  "updatePost": {
+    "id": 1,
+    "title": "ERP API Updated Post",
+    "body": "Updated via REST Assured",
+    "userId": 1
+  }
+}
